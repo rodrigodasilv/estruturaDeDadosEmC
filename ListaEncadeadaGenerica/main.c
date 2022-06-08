@@ -22,4 +22,5 @@ int main(){
  	printf("Quantidade de elementos na lista: %i \n",conta_elementos(l1));
  	desaloca_lista(&l1);
  	printf("Quantidade de elementos na lista: %i \n",conta_elementos(l1));
+	return 0;
 }
