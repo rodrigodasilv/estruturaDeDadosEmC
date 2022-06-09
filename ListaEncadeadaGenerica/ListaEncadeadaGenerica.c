@@ -16,11 +16,11 @@ int lista_vazia ( Lista l ){
 int insere_inicio( Lista *p, void *info ){
 	Elemento *novo = malloc( sizeof(Elemento) );
 	if( novo == NULL )
-		return 0; // Erro, falta de memória!
+		return 0; // Erro, falta de memÃ³ria!
  	novo->info = malloc( p->tamInfo );
  	if( novo->info == NULL ){
  		free(novo);
- 		return 0; // Erro, falta de memória!
+ 		return 0; // Erro, falta de memÃ³ria!
  	}
 	memcpy(novo->info, info, p->tamInfo);
  	novo->proximo = p->cabeca;
@@ -49,7 +49,7 @@ void mostra_lista( Lista l, void (*mostra)(void *) ){
  		printf("Dados da lista:\n");
  		Elemento *p = l.cabeca;
  		while( p != NULL ){
- 			mostra( p->info ); // Invocação por callback	
+ 			mostra( p->info ); // InvocaÃ§Ã£o por callback	
  			p = p->proximo;
  		}
  	}
@@ -66,14 +66,14 @@ int conta_elementos( Lista l ){
 }
 
 void desaloca_lista( Lista *l ){
-	Elemento *e, *p = l->cabeca;
-	while( p != NULL ){
-		e = p;
-		p = p->proximo;
-		free(e->info);
-		free(e);
-		l->qtd--;
+	Elemento *prox, *aux = l->cabeca;
+	while( l != NULL ){
+		prox = aux->proximo;
+		free(aux->info);
+		free(aux);
+		aux=prox;
 	}
 	l->cabeca=NULL;
+	l->qtd=0;
 }
 
